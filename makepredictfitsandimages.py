@@ -4,7 +4,7 @@ import tensorflow as tf
 from tensorflow.keras import backend as K
 #import tensorflow_addons as tfa
 import os
-from unetmodelsimple5 import *
+from cnnmodel import *
 import math
 import pandas as pd
 import seaborn as sns
