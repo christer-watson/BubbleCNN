@@ -81,7 +81,7 @@ for sourcename in sourcelist:
 	axs[2,1].set_title("Binary prediction")
 	axs[2,2].imshow(maskdata)
 	axs[2,2].set_title("Bubble Catalog")
-	fig.savefig(sourcename+".png")
+#	fig.savefig(sourcename+".png")
 	plt.tight_layout()
 	for ax in fig.get_axes():
 		ax.axis('off')

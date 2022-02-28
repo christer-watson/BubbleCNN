@@ -43,7 +43,7 @@ loss = soft_dice_loss
 metrics = [tf.keras.metrics.BinaryAccuracy(), intersection, union, iou]
 earlystopping = tf.keras.callbacks.EarlyStopping(monitor='iou', mode='max', restore_best_weights = True, patience=30)
 callbacks = [LearningRateReducerCb(), earlystopping]
-epochs=5
+epochs=500
 model.compile(optimizer=adam,loss=loss, metrics = metrics)
 
 #results = model.fit(sourcegenerator, epochs=epochs, callbacks=callbacks,steps_per_epoch=2)
@@ -53,4 +53,4 @@ results = model.fit(sourcegenerator, epochs=epochs, callbacks=callbacks)
 model.optimizer = None
 model.compiled_loss = None
 model.compiled_metrics = None
-#model.save('unetsimplefitting3model.tf')
+model.save('cnnmodel02282022A')
