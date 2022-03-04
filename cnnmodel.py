@@ -26,9 +26,13 @@ def unetmodel(pretrained_weights = None,input_size = (1024,1024,6), initfilters=
 	layerA = convmodel(inputs, commonlayer1, commonlayer3, commonlayer7, pool_size=1)
 	layerB = convmodel(inputs, commonlayer1, commonlayer3, commonlayer7, pool_size=2)
 	layerC = convmodel(inputs, commonlayer1, commonlayer3, commonlayer7, pool_size=4)
+	layerD = convmodel(inputs, commonlayer1, commonlayer3, commonlayer7, pool_size=8)
+	layerE = convmodel(inputs, commonlayer1, commonlayer3, commonlayer7, pool_size=16)
+	layerF = convmodel(inputs, commonlayer1, commonlayer3, commonlayer7, pool_size=32)
+	layerG = convmodel(inputs, commonlayer1, commonlayer3, commonlayer7, pool_size=64)
 	
 	
-	layer10 = tf.keras.layers.concatenate([layerA, layerB, layerC])
+	layer10 = tf.keras.layers.concatenate([layerA, layerB, layerC, layerD, layerE, layerF, layerG])
 	layer11 = tf.keras.layers.Conv2D(1,1,activation = 'sigmoid')(layer10)
 	model = tf.keras.models.Model(inputs = inputs, outputs = layer11)
     
