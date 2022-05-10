@@ -4,4 +4,8 @@ BubbleCNN is a tool to use a convolutional neural network to recognize wind-blow
 - 7 data channels ('colors' to non-astronomers) are supported, allowing features from IR to radio light to be used for recognizing wind-blown-bubbles
 - A catalog of 1000s of wind-blown bubbles, each represented by seven 1024x1024 image requires loading data in batches. A data generator customized was required to handle the high S/N data files and 7 data channels
 - Typical wind-blown bubbles occupy a small area of the data (< 2%), so an intersection/union-style metric, Dice, was used.
+- Becauses wind-blown bubbles can be a wide range of distances away (200 pc to 20,000 pc), their appearance can also range from small to large. The convolutional neural network reuses the same matrix on several scales, effectively applying the same feature-seeking tools to a wide range of size-scales.
 
+The convolutional neural network has a U-Net-inspired structure. A series of convolutional layers and max pooling layers are applied. Each series looks for ever more complicated structures. For example, the first layer may activate on horizontal or vertical lines. The second layer might activate on combinations of these shapes from the earlier layer. The third and final layer recognizes shapes associated with wind-blown bubbles.
+
+This series of layers is first applied to the seven 1024x1024 images. The data dimensions are reduced by a factor of 2 (to 512x512) and the same series of layers are applied again. This process is repeated for reduction factors of 4, 8 and 16. The results of each application are combined for a final prediction. The prediction is a probability (between 0 & 1) that each pixel is inside or outside a wind-blown bubble.
