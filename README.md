@@ -28,3 +28,5 @@ Several scripts are used to download the data and convert them into a standard i
 - vlassdownload.py
 
 The training is performed in the file cnnfitting.py and saved in a directory-formatted structure. Several draft models are provided, named cnnmodel(date)A where (date) is a MMDDYYYY format and A may be replaced with other letters.
+
+To apply a model to new data, the file makepredictfitsandimages.py is provided. The script requires a user to refer to a model, such as are provided, and the input data. The script uses the input data and model to predict which pixels are inside wind-blown bubbles, then outputs the results as fits-formatted astronomy files and png-formatted image files. 
